@@ -20,10 +20,10 @@ Test methods should have a return type of void and take zero parameters.  If an 
 ```
 using TestFramework;
 
-class Tests()
+public class Tests()
 {
    [TestMethod]
-   void SuccessfulTest1()
+   public void SuccessfulTest1()
    {
       var sum = 1 + 1;
       TestHelper.Expected<int>( 2, () =>
@@ -33,7 +33,7 @@ class Tests()
    }
 
    [TestMethod]
-   void SuccessfulTest2()
+   public void SuccessfulTest2()
    {
       object foo = null;
       TestHelper.ExpectedException<NullReferenceException>( () =>
@@ -43,7 +43,7 @@ class Tests()
    }
 
    [TestMethod]
-   void FailedTest1()
+   public void FailedTest1()
    {
       TestHelper.Expected<int>( 2, () =>
       {
@@ -52,7 +52,7 @@ class Tests()
    }
 
    [TestMethod]
-   void FailedTest2()
+   public void FailedTest2()
    {
       object foo = new object();
       TestHelper.ExpectedException<NullReferenceException>( () =>
@@ -62,7 +62,7 @@ class Tests()
    }
 
    [TestMethod]
-   void FailedTest3()
+   public void FailedTest3()
    {
       object foo = new object[0];
       TestHelper.ExpectedException<NullReferenceException>( () =>
