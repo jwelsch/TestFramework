@@ -30,7 +30,7 @@ namespace TestFramework
 
          if ( !caught )
          {
-            throw new TestException( String.Format( "Expected {0} was not thrown.", expectedType.Name ), 1 + stackUnwind );
+            throw new TestException( String.Format( "Expected {0} was not thrown.", expectedType.Name ), stackUnwind );
          }
       }
 
@@ -64,7 +64,7 @@ namespace TestFramework
 
          if ( throwException )
          {
-            throw new TestException( String.Format( "Expected value: {0}, but got value: {1}.", expected, result ), 1 + stackUnwind );
+            throw new TestException( String.Format( "Expected value: {0}, but got value: {1}.", expected, result ), stackUnwind );
          }
       }
 
