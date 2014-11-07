@@ -105,7 +105,7 @@ namespace TestFramework
             {
                using ( var stream2 = new FileStream( filePath2, FileMode.Open, FileAccess.Read, FileShare.Read ) )
                {
-                  TestHelper.Compare( stream1, stream2, stackUnwind + 1 );
+                  TestHelper.CompareStreams( stream1, stream2, stackUnwind + 1 );
                }
             }
          }
