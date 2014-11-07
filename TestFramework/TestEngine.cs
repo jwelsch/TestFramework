@@ -10,7 +10,7 @@ namespace TestFramework
          var extractor = new TestExtractor();
          var testCollection = extractor.ExtractTestMethods( testObject );
 
-         writer.WriteLine( "Found {0} test{1} to run.", testCollection.Count, testCollection.Count == 1 ? string.Empty : "s" );
+         writer.WriteLine( "Found {0} test{1} to run in {2}.", testCollection.Count, testCollection.Count == 1 ? string.Empty : "s", testObject.GetType().Name );
 
          var testResults = new List<TestResult>();
 
