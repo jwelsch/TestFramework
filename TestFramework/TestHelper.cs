@@ -97,7 +97,7 @@ namespace TestFramework
          }
       }
 
-      public static void CompareFiles( string filePath1, string filePath2, int stackUnwind = 1 )
+      public static void CompareFiles( string filePath1, string filePath2, bool compareAttributes = true, bool compareTimes = true, int stackUnwind = 1 )
       {
          try
          {
@@ -106,6 +106,32 @@ namespace TestFramework
                using ( var stream2 = new FileStream( filePath2, FileMode.Open, FileAccess.Read, FileShare.Read ) )
                {
                   TestHelper.CompareStreams( stream1, stream2, stackUnwind + 1 );
+               }
+            }
+
+            if ( compareAttributes )
+            {
+               if ( File.GetAttributes( filePath1 ) != File.GetAttributes( filePath2 ) )
+               {
+                  throw new TestException( String.Format( "File attributes do not match." ) );
+               }
+            }
+
+            if ( compareTimes )
+            {
+               if ( File.GetCreationTime( filePath1 ) != File.GetCreationTime( filePath2 ) )
+               {
+                  throw new TestException( String.Format( "Creation times do not match." ) );
+               }
+
+               if ( File.GetLastAccessTime( filePath1 ) != File.GetLastAccessTime( filePath2 ) )
+               {
+                  throw new TestException( String.Format( "Last access times do not match." ) );
+               }
+
+               if ( File.GetLastWriteTime( filePath1 ) != File.GetLastWriteTime( filePath2 ) )
+               {
+                  throw new TestException( String.Format( "Last write times do not match." ) );
                }
             }
          }
